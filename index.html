@@ -22,13 +22,34 @@
             height: 30%
         }
     </style>
+    <script>
+        var prev_rate = 0;
+        window.onload = function () {
+            setInterval(async function () {
+                fetch("https://api.coindesk.com/v1/bpi/currentprice/USD.json")
+                    .then(response => response.json())
+                    .then(json => {
+                        const rate = json.bpi.USD.rate_float;
+                        const html = '<h4>Bitcoin Price Index</h4>' +
+                            '<p><div id="rate">' + json.bpi.USD.rate + '</div>' +
+                            '<div id="time">' + json.time.updated + '</div></p>' +
+                            '<p>Powered by <a href="https://www.coindesk.com/price/bitcoin">CoinDesk</p>';
+                        document.getElementById("news").innerHTML = html;
+                        document.getElementById("rate").style.color =
+                            (prev_rate < rate ? 'red' : (prev_rate == rate ? 'black' : 'blue'));
+                        document.getElementById("rate").style.fontWeight = 'bold';
+                        prev_rate = json.bpi.USD.rate_float;
+                    });
+            }, 10000);
+        }
+    </script>
 </head>
 
 <body>
     <h2>じっけんちゅう</h2>
     <p class="container">
-        <iframe class="grid"
-            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=3&timescale=300&candles=50&style=candles"></iframe><br />
+        <iframe class="grid" id="hoge"
+            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=3&timescale=300&candles=50&style=candles"></iframe>
         <!-- <div style="width:500px"><a target="_blank" href="https://jp.investing.com"><img
                     src="https://wmt-invdn-com.akamaized.net/forexpros_jp_logo.png" alt="Investing.com"
                     title="Investing.com" style="float:left" border="0" /></a><span style="float:right"><span
@@ -36,7 +57,7 @@
                         rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;"
                         class="underline_link">Investing.com 日本</a> によって機能された外国為替チャート。</span></span></div> -->
         <iframe class="grid"
-            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=2&timescale=300&candles=50&style=candles"></iframe><br />
+            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=2&timescale=300&candles=50&style=candles"></iframe>
         <!-- <div style="width:500px"><a target="_blank" href="https://jp.investing.com"><img
                     src="https://wmt-invdn-com.akamaized.net/forexpros_jp_logo.png" alt="Investing.com"
                     title="Investing.com" style="float:left" border="0" /></a><span style="float:right"><span
@@ -44,7 +65,7 @@
                         rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;"
                         class="underline_link">Investing.com 日本</a> によって機能された外国為替チャート。</span></span></div> -->
         <iframe class="grid"
-            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=1&timescale=300&candles=50&style=candles"></iframe><br />
+            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=1&timescale=300&candles=50&style=candles"></iframe>
         <!-- <div style="width:500px"><a target="_blank" href="https://jp.investing.com"><img
                     src="https://wmt-invdn-com.akamaized.net/forexpros_jp_logo.png" alt="Investing.com"
                     title="Investing.com" style="float:left" border="0" /></a><span style="float:right"><span
@@ -52,7 +73,7 @@
                         rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;"
                         class="underline_link">Investing.com 日本</a> によって機能された外国為替チャート。</span></span></div> -->
         <iframe class="grid"
-            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=68&timescale=300&candles=50&style=candles"></iframe><br />
+            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=68&timescale=300&candles=50&style=candles"></iframe>
         <!-- <div style="width:500px"><a target="_blank" href="https://jp.investing.com"><img
                     src="https://wmt-invdn-com.akamaized.net/forexpros_jp_logo.png" alt="Investing.com"
                     title="Investing.com" style="float:left" border="0" /></a><span style="float:right"><span
@@ -65,17 +86,20 @@
                 href="https://jp.investing.com?utm_source=WMT&amp;utm_medium=referral&amp;utm_campaign=TOP_CRYPTOCURRENCIES&amp;utm_content=Footer%20Link"
                 target="_blank" rel="nofollow">Investing.com</a></div> -->
         <iframe class="grid"
-            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=21&timescale=300&candles=50&style=candles"></iframe><br />
+            src="https://sslcharts.forexprostools.com/index.php?force_lang=11&pair_ID=21&timescale=300&candles=50&style=candles"></iframe>
         <!-- <div style="width:500px"><a target="_blank" href="https://jp.investing.com"><img
                     src="https://wmt-invdn-com.akamaized.net/forexpros_jp_logo.png" alt="Investing.com"
                     title="Investing.com" style="float:left" border="0" /></a><span style="float:right"><span
                     style="font-size: 11px;color: #333333;text-decoration: none;"><a href="https://jp.investing.com/"
                         rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;"
                         class="underline_link">Investing.com 日本</a> によって機能された外国為替チャート。</span></span></div> -->
-        <div class="grid">
+        <span class="grid" id="news">
+            <h4>Bitcoin Price Index</h4>
+        </span>
+        <span class="grid">
             <div class="nomics-ticker-widget" data-name="PETROLEUM" data-base="OIL" data-quote="USD"></div>
             <script src="https://widget.nomics.com/embed.js"></script>
-        </div>
+        </span>
     </p>
 </body>
 
