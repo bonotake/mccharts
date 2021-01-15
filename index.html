@@ -21,6 +21,25 @@
             width: 90%;
             height: 30%
         }
+
+        .container2 {
+            margin: 0 auto;
+            padding: 5px;
+            width: 90%;
+            height: 90%;
+            background-color: #fff;
+            column-count: 2;
+            column-gap: 0;
+        }
+
+        .grid2 {
+            padding: 5px;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            width: 90%;
+            height: 60%
+        }
     </style>
     <script>
         var prev_rate = 0;
@@ -94,16 +113,21 @@
                         rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;"
                         class="underline_link">Investing.com 日本</a> によって機能された外国為替チャート。</span></span></div> -->
         <!-- <span class="grid" id="news"></span> -->
-        <iframe class="grid"
-            src="https://ssltvc.forexprostools.com/?pair_ID=8827&interval=1800&plotStyle=area&domain_ID=11&lang_ID=11&timezone_ID=27"></iframe>
-        <iframe class="grid"
-            src="https://ssltvc.forexprostools.com/?pair_ID=44336&height=480&width=650&interval=1800&plotStyle=area&domain_ID=11&lang_ID=11&timezone_ID=27"></iframe>
-        <iframe class="grid"
-            src="https://ssltvc.forexprostools.com/?pair_ID=178&height=480&width=650&interval=1800&plotStyle=area&domain_ID=11&lang_ID=11&timezone_ID=27"></iframe>
-        <span class="grid">
+        <!-- <iframe class="grid"
+            src="https://ssltvc.forexprostools.com/?pair_ID=8827&interval=1800&plotStyle=area&domain_ID=11&lang_ID=11&timezone_ID=27"></iframe> -->
+        <!-- <iframe class="grid"
+            src="https://ssltvc.forexprostools.com/?pair_ID=44336&height=480&width=650&interval=1800&plotStyle=area&domain_ID=11&lang_ID=11&timezone_ID=27"></iframe> -->
+        <!-- <iframe class="grid"
+            src="https://ssltvc.forexprostools.com/?pair_ID=178&height=480&width=650&interval=1800&plotStyle=area&domain_ID=11&lang_ID=11&timezone_ID=27"></iframe> -->
+        <!-- <span class="grid">
             <div class="nomics-ticker-widget" data-name="PETROLEUM" data-base="OIL" data-quote="USD"></div>
             <script src="https://widget.nomics.com/embed.js"></script>
-        </span>
+        </span> -->
+    </p>
+    <p class="container2">
+        <iframe class="grid2" height="480" width="650" src="https://ssltvc.forexprostools.com/?pair_ID=8827&height=480&width=650&interval=1800&plotStyle=area&domain_ID=11&lang_ID=11&timezone_ID=27"></iframe>
+        <iframe class="grid2" height="480" width="650" src="https://ssltvc.forexprostools.com/?pair_ID=178&height=480&width=650&interval=1800&plotStyle=area&domain_ID=11&lang_ID=11&timezone_ID=27"></iframe>
+        <iframe class="grid2" height="480" width="650" src="https://ssltvc.forexprostools.com/?pair_ID=44336&height=480&width=650&interval=1800&plotStyle=area&domain_ID=11&lang_ID=11&timezone_ID=27"></iframe>
     </p>
 </body>
 
